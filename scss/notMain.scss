@@ -1,0 +1,44 @@
+@mixin dynamic-button($padding1){
+    padding:$padding1;
+    border:5px solid var(--icon-border);
+    background-image: linear-gradient(to right, #FFD56F , #FFC536, #FFBB10);
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 0.21em;
+    margin: 1em 0 1em 0;
+    transition: color 0.5s;
+    font-size: 1rem;
+    font-weight: 800;
+    color:rgba(0, 0, 0, 0.671);
+}
+.dynamic-button{
+    @include dynamic-button(1em 2em);
+    &:hover, &:focus{
+        cursor: pointer;
+        padding:1.3125em 2.3215em;
+        border:none;
+        color:white;
+        &::after,&::before{
+            width:100%;
+            cursor: pointer;
+            border-top:3px solid #eeebeb;
+            transition: width 0.5s ease-out;
+        }
+    }
+    &::before, &::after{
+        content:'';
+        border:transparent;
+        box-sizing: inherit;
+        position: absolute;
+        width:0;
+        height: 0;
+    }
+    &::after{
+        top:0;
+        right:0;
+    }
+    &::before{
+        bottom:0;
+        left:0;
+    }
+}
